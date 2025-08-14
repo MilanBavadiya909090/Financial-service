@@ -27,8 +27,10 @@ def get_database_credentials():
             region_name='us-east-1'
         )
         
-        # Retrieve the secret
-        secret_name = "financial-app/database"
+        # Retrieve the secret - use environment-aware secret name
+        import os
+        environment = os.getenv("ENVIRONMENT", "dev")
+        secret_name = f"financial-app-{environment}/database"
         response = client.get_secret_value(SecretId=secret_name)
         
         # Parse the secret
@@ -42,7 +44,7 @@ def get_database_credentials():
         return {
             "host": os.getenv("DB_HOST", "localhost"),
             "port": int(os.getenv("DB_PORT", 3306)),
-            "username": os.getenv("DB_USERNAME", "admin"),
+            "username": os.getenv("DB_USER", "admin"),  # Changed from DB_USERNAME to DB_USER
             "password": os.getenv("DB_PASSWORD", ""),
             "dbname": os.getenv("DB_NAME", "financial_app")
         }
