@@ -15,7 +15,8 @@ RUN npm ci --only=production
 COPY . .
 
 # Set environment variable for API URL
-ENV REACT_APP_API_URL=http://financial-app-alb-721574606.us-east-1.elb.amazonaws.com:8000
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
 # Build the React app for production
 RUN npm run build
