@@ -95,7 +95,7 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="container">
-          <h1>SecureBank-Anybank Financial Services</h1>
+          <h1>AnyBank Updated Financial Services</h1>
           <p>Choose the perfect financial plan to secure your future</p>
           <div className="api-status">
             <span className="status-indicator">
